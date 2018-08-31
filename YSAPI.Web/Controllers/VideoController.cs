@@ -19,7 +19,7 @@ namespace YSAPI.Web.Controllers
             return View();
         }
         /// <summary>
-        /// 
+        /// 视频列表
         /// </summary>
         /// <returns></returns>
         public async Task<ActionResult> List()
