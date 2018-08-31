@@ -24,7 +24,7 @@ namespace YSAPI.Web.Controllers
         /// <returns></returns>
         public async Task<ActionResult> List()
         {
-            var result = await YSAPIManager.GetVideoList(accessToken);
+            var result = await YSAPIManager.GetVideoList(accessToken, 0, 50);
             return View(result.data);
         }
     }

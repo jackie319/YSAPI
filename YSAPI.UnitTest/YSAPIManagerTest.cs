@@ -33,7 +33,7 @@ namespace YSAPI.UnitTest
         [TestMethod]
         public async Task TestGetVideoList()
         {
-            var result = await YSAPIManager.GetVideoList(accessToken);
+            var result = await YSAPIManager.GetVideoList(accessToken,0,50);
             Assert.IsTrue(result.code.Equals("200"));
         }
         /// <summary>

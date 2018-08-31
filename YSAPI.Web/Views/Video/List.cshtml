@@ -2,12 +2,12 @@
 @{
     ViewBag.Title = "List";
 }
-<h1>视频列表</h1>
+<h2>视频列表</h2>
 @foreach (var item in Model)
 {
-    <h1>
+    <h3>
         <a href="~/Video/Index?hls=@item.liveAddress&rtmp=@item.rtmp">@item.deviceSerial:@item.channelNo</a>
         状态(1使用中)：@item.status;异常信息(0正常):@item.exception
-    </h1>
+    </h3>
 }
 
