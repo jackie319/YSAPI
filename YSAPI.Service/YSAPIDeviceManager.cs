@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YSAPI.Service.Common;
 using YSAPI.Service.HttpApi.Model;
+using YSAPI.Service.WebApi.Model;
 
 namespace YSAPI.Service
 {
@@ -57,6 +58,19 @@ namespace YSAPI.Service
             var url = "https://open.ys7.com/api/lapp/device/capture";
             string data = $"accessToken={accessToken}&deviceSerial={deviceSerial}&channelNo={channelNo}";
             var result = await RequestUtility.PostAsync<CaptureDeviceResultModel>(data, url);
+            return result;
+        }
+        /// <summary>
+        /// 获取指定设备的通道信息
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="deviceSerial">设备序列号</param>
+        /// <returns></returns>
+        public static async Task<DeviceCameraListResultModel> GetDeviceCameraList(string accessToken,string deviceSerial)
+        {
+            var url = "https://open.ys7.com/api/lapp/device/camera/list";
+            string data = $"accessToken={accessToken}&deviceSerial={deviceSerial}";
+            var result = await RequestUtility.PostAsync<DeviceCameraListResultModel>(data,url);
             return result;
         }
     }
