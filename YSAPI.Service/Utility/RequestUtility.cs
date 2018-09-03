@@ -66,6 +66,17 @@ namespace YSAPI.Service
             }
         }
 
+        public static T Post<T>(string data, string url)
+        {
+            using (var webClient = new WebClient { Encoding = Encoding.UTF8 })
+            {
+                webClient.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
+                var result = webClient.UploadString(url, "POST", data);
+                var resultModel = JsonConvert.DeserializeObject<T>(result);
+                return resultModel;
+            }
+        }
+
         /// <summary>
         /// 拼接请求数据
         /// </summary>

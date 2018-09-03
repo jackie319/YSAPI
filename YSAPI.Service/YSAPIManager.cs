@@ -24,11 +24,26 @@ namespace YSAPI.Service
         /// <param name="appKey"></param>
         /// <param name="appSecret"></param>
         /// <returns></returns>
-        public static async Task<GetTokenResponseModel> GetAccessToken(string appKey, string appSecret)
+        public static async Task<GetTokenResponseModel> GetAccessTokenAsync(string appKey, string appSecret)
         {
             var url = "https://open.ys7.com/api/lapp/token/get";
             string data = $"appKey={appKey}&appSecret={appSecret}";
             var result = await RequestUtility.PostAsync<GetTokenResponseModel>(data, url);
+            return result;
+        }
+        /// <summary>
+        ///  获取AccessToken
+        /// 7天过期，调用者自己处理
+        /// 同步方法
+        /// </summary>
+        /// <param name="appKey"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public static GetTokenResponseModel GetAccessToken(string appKey, string appSecret)
+        {
+            var url = "https://open.ys7.com/api/lapp/token/get";
+            string data = $"appKey={appKey}&appSecret={appSecret}";
+            var result = RequestUtility.Post<GetTokenResponseModel>(data, url);
             return result;
         }
 
