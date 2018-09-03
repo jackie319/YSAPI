@@ -23,7 +23,7 @@ namespace YSAPI.UnitTest
         [TestMethod]
         public async Task TestGetAccessToken()
         {
-            var result = await YSAPIManager.GetAccessToken(appKey, appSecret);
+            var result = await YSAPIManager.GetAccessTokenAsync(appKey, appSecret);
             Assert.IsTrue(result.code.Equals("200"));
         }
         /// <summary>
