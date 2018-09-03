@@ -22,6 +22,6 @@ namespace YSAPI.Service
         /// <summary>
         /// 具体过期时间，精确到毫秒
         /// </summary>
-        public string expireTime { get; set; }
+        public long expireTime { get; set; }
     }
 }
