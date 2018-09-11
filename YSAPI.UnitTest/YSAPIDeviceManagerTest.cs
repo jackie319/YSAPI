@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using YSAPI.Service;
 
 namespace YSAPI.UnitTest
 {
     [TestClass]
     public class YSAPIDeviceManagerTest
     {
-        private string accessToken = "at.7ajniaj94z2dc4669mhizb9jdvfj1wn7-35z3ngq4m6-116rpuj-ze1fmbsjb";
+        private string accessToken = "at.72nj22mt18w9odum5ek5b35z256wy5xf-7aupchen4t-0lq9t9g-604rhy8u4";
         private string appKey = "6767e01d34054cd8bbdfb17eb97eda8e";
         private string appSecret = "ef4b42d12163a46f7249447d555ad071";
 
@@ -22,6 +23,20 @@ namespace YSAPI.UnitTest
             TimeSpan toNow = TimeSpan.FromMilliseconds(time);
             var now=dtStart.Add(toNow);
             Assert.IsTrue(1 == 1);
+        }
+
+        [TestMethod]
+        public async Task TestGetFullDayRecordStatus()
+        {
+            var result=await YSAPIDeviceManager.GetFullDayRecordStatus(accessToken, "574364918");
+            Assert.IsTrue(result.code.Equals("200"));
+        }
+
+        [TestMethod]
+        public async Task TestSetFullDayRecordStatus()
+        {
+            var result = await YSAPIDeviceManager.SetFullDayRecordStaus(accessToken, "674412071", 1,1);
+            Assert.IsTrue(result.code.Equals("200"));
         }
     }
 

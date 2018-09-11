@@ -11,7 +11,7 @@ namespace YSAPI.UnitTest
     [TestClass]
     public class YSAPIManagerTest
     {
-        private string accessToken = "at.c27cb2dxau6odzj24kyom9jb3gjnnhc3-45f70uy0b5-1dnwfw0-6ekpviujh";
+        private string accessToken = "at.72nj22mt18w9odum5ek5b35z256wy5xf-7aupchen4t-0lq9t9g-604rhy8u4";
         private string appKey = "6767e01d34054cd8bbdfb17eb97eda8e";
         private  string appSecret = "ef4b42d12163a46f7249447d555ad071";
 

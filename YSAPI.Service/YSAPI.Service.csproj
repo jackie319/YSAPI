@@ -50,6 +50,7 @@
     <Compile Include="Common\ResponseModel.cs" />
     <Compile Include="Common\SourceModel.cs" />
     <Compile Include="HttpApi\Model\CaptureDeviceResultModel.cs" />
+    <Compile Include="HttpApi\Model\FullDayRecordStatusResutlModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\RequestUtility.cs" />
     <Compile Include="WebApi\Model\DeviceCameraListResultModel.cs" />

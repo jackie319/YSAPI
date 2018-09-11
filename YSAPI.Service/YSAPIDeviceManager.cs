@@ -73,5 +73,35 @@ namespace YSAPI.Service
             var result = await RequestUtility.PostAsync<DeviceCameraListResultModel>(data,url);
             return result;
         }
+
+        /// <summary>
+        /// 获取设备全天录像开关状态（需要设备支持全天录像功能）
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="deviceSerial"></param>
+        /// <returns></returns>
+        public static async Task<FullDayRecordStatusResutlModel> GetFullDayRecordStatus(string accessToken,string deviceSerial)
+        {
+            var url = "https://open.ys7.com/api/lapp/device/fullday/record/switch/status";
+            string data = $"accessToken={accessToken}&deviceSerial={deviceSerial}";
+            var result = await RequestUtility.PostAsync<FullDayRecordStatusResutlModel>(data,url);
+            return result;
+        }
+        /// <summary>
+        /// 设置全天录像开关状态（需要设备支持全天录像功能）
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="deviceSerial"></param>
+        /// <param name="enable">状态：0-关闭，1-开启</param>
+        /// <param name="channelNo">通道号，不传表示设备本身</param>
+        /// <returns></returns>
+        public static async Task<ResponseModel> SetFullDayRecordStaus(string accessToken,string deviceSerial,int enable,int? channelNo)
+        {
+            var url = "https://open.ys7.com/api/lapp/device/fullday/record/switch/set";
+            string data = channelNo == null ? $"accessToken={accessToken}&deviceSerial={deviceSerial}&enable={enable}" 
+                : $"accessToken={accessToken}&deviceSerial={deviceSerial}&enable={enable}&channelNo={channelNo}";
+            var result = await RequestUtility.PostAsync<ResponseModel>(data,url);
+            return result;
+        }
     }
 }

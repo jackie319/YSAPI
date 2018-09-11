@@ -10,7 +10,7 @@ namespace YSAPI.Web.Controllers
 {
     public class VideoController : Controller
     {
-        private string accessToken = "at.c27cb2dxau6odzj24kyom9jb3gjnnhc3-45f70uy0b5-1dnwfw0-6ekpviujh";
+        private string accessToken = "at.0byq7bo560jyh5pabnho5ccn3ofs3p8j-6ihtywvshk-0etdg79-zuprqgtgt";
         // GET: Video
         public ActionResult Index(string hls,string rtmp)
         {
