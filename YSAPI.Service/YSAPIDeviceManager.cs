@@ -48,6 +48,7 @@ namespace YSAPI.Service
         /// 抓拍设备当前画面，该接口仅适用于IPC或者关联IPC的DVR设备，该接口并非预览时的截图功能。
         /// 海康型号设备可能不支持萤石协议抓拍功能，使用该接口可能返回不支持或者超时。
         /// 注意：设备抓图能力有限，请勿频繁调用，频繁调用将会被拉入限制黑名单,建议调用的间隔为4s左右。
+        /// 抓拍后的图片路径，图片保存有效期为2小时
         /// </summary>
         /// <param name="accessToken"></param>
         /// <param name="deviceSerial"></param>
@@ -101,6 +102,21 @@ namespace YSAPI.Service
             string data = channelNo == null ? $"accessToken={accessToken}&deviceSerial={deviceSerial}&enable={enable}" 
                 : $"accessToken={accessToken}&deviceSerial={deviceSerial}&enable={enable}&channelNo={channelNo}";
             var result = await RequestUtility.PostAsync<ResponseModel>(data,url);
+            return result;
+        }
+
+        /// <summary>
+        /// 查询用户下设备基本信息列表
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="pageStart"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public static async Task<DeviceListResultModel> GetDeviceList(string accessToken,int pageStart,int pageSize)
+        {
+            var url = "https://open.ys7.com/api/lapp/device/list";
+            string data = $"accessToken={accessToken}&pageStart={pageStart}&pageSize={pageSize}";
+            var result =await RequestUtility.PostAsync<DeviceListResultModel>(data,url);
             return result;
         }
     }

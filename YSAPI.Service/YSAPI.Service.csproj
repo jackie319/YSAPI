@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\RequestUtility.cs" />
     <Compile Include="WebApi\Model\DeviceCameraListResultModel.cs" />
+    <Compile Include="WebApi\Model\DeviceListResultModel.cs" />
     <Compile Include="WebApi\Model\LiveAddressResultModel.cs" />
     <Compile Include="WebApi\Model\OpenLiveResultModel.cs" />
     <Compile Include="WebApi\Model\DeviceTrafficDetailResultModel.cs" />

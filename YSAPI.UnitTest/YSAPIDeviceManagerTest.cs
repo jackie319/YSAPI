@@ -11,7 +11,7 @@ namespace YSAPI.UnitTest
     [TestClass]
     public class YSAPIDeviceManagerTest
     {
-        private string accessToken = "at.72nj22mt18w9odum5ek5b35z256wy5xf-7aupchen4t-0lq9t9g-604rhy8u4";
+        private string accessToken = "at.bkg2aklx2q63pv6m1cjuz0zr7elvrfk3-837lk38ayj-0kob5wz-ntwvrsctb";
         private string appKey = "6767e01d34054cd8bbdfb17eb97eda8e";
         private string appSecret = "ef4b42d12163a46f7249447d555ad071";
 
@@ -36,6 +36,12 @@ namespace YSAPI.UnitTest
         public async Task TestSetFullDayRecordStatus()
         {
             var result = await YSAPIDeviceManager.SetFullDayRecordStaus(accessToken, "674412071", 1,1);
+            Assert.IsTrue(result.code.Equals("200"));
+        }
+        [TestMethod]
+        public async Task TestGetDeviceList()
+        {
+            var result = await YSAPIDeviceManager.GetDeviceList(accessToken,1,10);
             Assert.IsTrue(result.code.Equals("200"));
         }
     }
