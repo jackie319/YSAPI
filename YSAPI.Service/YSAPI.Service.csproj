@@ -53,7 +53,9 @@
     <Compile Include="HttpApi\Model\FullDayRecordStatusResutlModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\RequestUtility.cs" />
+    <Compile Include="WebApi\Model\CameraListResultModel.cs" />
     <Compile Include="WebApi\Model\DeviceCameraListResultModel.cs" />
+    <Compile Include="WebApi\Model\DeviceCapacityResultModel.cs" />
     <Compile Include="WebApi\Model\DeviceListResultModel.cs" />
     <Compile Include="WebApi\Model\LiveAddressResultModel.cs" />
     <Compile Include="WebApi\Model\OpenLiveResultModel.cs" />

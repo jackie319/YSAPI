@@ -36,11 +36,11 @@ namespace YSAPI.Service
         /// <param name="accessToken"></param>
         /// <param name="deviceSerial">设备序列号</param>
         /// <returns></returns>
-        public static async Task<ResponseModel> DeleteDevice(string accessToken,string deviceSerial)
+        public static async Task<ResponseModel> DeleteDevice(string accessToken, string deviceSerial)
         {
             var url = "https://open.ys7.com/api/lapp/device/delete";
             string data = $"accessToken={accessToken}&deviceSerial={deviceSerial}";
-            var result =await RequestUtility.PostAsync<ResponseModel>(data,url);
+            var result = await RequestUtility.PostAsync<ResponseModel>(data, url);
             return result;
         }
         /// <summary>
@@ -54,7 +54,7 @@ namespace YSAPI.Service
         /// <param name="deviceSerial"></param>
         /// <param name="channelNo"></param>
         /// <returns></returns>
-        public static async Task<CaptureDeviceResultModel> CaptureDevice(string accessToken,string deviceSerial,int channelNo)
+        public static async Task<CaptureDeviceResultModel> CaptureDevice(string accessToken, string deviceSerial, int channelNo)
         {
             var url = "https://open.ys7.com/api/lapp/device/capture";
             string data = $"accessToken={accessToken}&deviceSerial={deviceSerial}&channelNo={channelNo}";
@@ -67,11 +67,11 @@ namespace YSAPI.Service
         /// <param name="accessToken"></param>
         /// <param name="deviceSerial">设备序列号</param>
         /// <returns></returns>
-        public static async Task<DeviceCameraListResultModel> GetDeviceCameraList(string accessToken,string deviceSerial)
+        public static async Task<DeviceCameraListResultModel> GetDeviceCameraList(string accessToken, string deviceSerial)
         {
             var url = "https://open.ys7.com/api/lapp/device/camera/list";
             string data = $"accessToken={accessToken}&deviceSerial={deviceSerial}";
-            var result = await RequestUtility.PostAsync<DeviceCameraListResultModel>(data,url);
+            var result = await RequestUtility.PostAsync<DeviceCameraListResultModel>(data, url);
             return result;
         }
 
@@ -81,11 +81,11 @@ namespace YSAPI.Service
         /// <param name="accessToken"></param>
         /// <param name="deviceSerial"></param>
         /// <returns></returns>
-        public static async Task<FullDayRecordStatusResutlModel> GetFullDayRecordStatus(string accessToken,string deviceSerial)
+        public static async Task<FullDayRecordStatusResutlModel> GetFullDayRecordStatus(string accessToken, string deviceSerial)
         {
             var url = "https://open.ys7.com/api/lapp/device/fullday/record/switch/status";
             string data = $"accessToken={accessToken}&deviceSerial={deviceSerial}";
-            var result = await RequestUtility.PostAsync<FullDayRecordStatusResutlModel>(data,url);
+            var result = await RequestUtility.PostAsync<FullDayRecordStatusResutlModel>(data, url);
             return result;
         }
         /// <summary>
@@ -96,12 +96,12 @@ namespace YSAPI.Service
         /// <param name="enable">状态：0-关闭，1-开启</param>
         /// <param name="channelNo">通道号，不传表示设备本身</param>
         /// <returns></returns>
-        public static async Task<ResponseModel> SetFullDayRecordStaus(string accessToken,string deviceSerial,int enable,int? channelNo)
+        public static async Task<ResponseModel> SetFullDayRecordStaus(string accessToken, string deviceSerial, int enable, int? channelNo)
         {
             var url = "https://open.ys7.com/api/lapp/device/fullday/record/switch/set";
-            string data = channelNo == null ? $"accessToken={accessToken}&deviceSerial={deviceSerial}&enable={enable}" 
+            string data = channelNo == null ? $"accessToken={accessToken}&deviceSerial={deviceSerial}&enable={enable}"
                 : $"accessToken={accessToken}&deviceSerial={deviceSerial}&enable={enable}&channelNo={channelNo}";
-            var result = await RequestUtility.PostAsync<ResponseModel>(data,url);
+            var result = await RequestUtility.PostAsync<ResponseModel>(data, url);
             return result;
         }
 
@@ -112,12 +112,59 @@ namespace YSAPI.Service
         /// <param name="pageStart"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public static async Task<DeviceListResultModel> GetDeviceList(string accessToken,int pageStart,int pageSize)
+        public static async Task<DeviceListResultModel> GetDeviceList(string accessToken, int pageStart, int pageSize)
         {
             var url = "https://open.ys7.com/api/lapp/device/list";
             string data = $"accessToken={accessToken}&pageStart={pageStart}&pageSize={pageSize}";
-            var result =await RequestUtility.PostAsync<DeviceListResultModel>(data,url);
+            var result = await RequestUtility.PostAsync<DeviceListResultModel>(data, url);
             return result;
         }
+
+        /// <summary>
+        /// NVR设备关联IPC
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="deviceSerial"></param>
+        /// <param name="ipcSerial"></param>
+        /// <param name="channelNo"></param>
+        /// <returns></returns>
+        public static async Task<ResponseModel> AddIPC(string accessToken, string deviceSerial, string ipcSerial, int channelNo)
+        {
+            var url = "https://open.ys7.com/api/lapp/device/ipc/add";
+            string data = $"accessToken={accessToken}&deviceSerial={deviceSerial}&ipcSerial={ipcSerial}&channelNo={channelNo}";
+            var result = await RequestUtility.PostAsync<ResponseModel>(data, url);
+            return result;
+        }
+
+        /// <summary>
+        /// 该接口用户根据设备序列号查询设备能力集
+        /// 能力集说明中有的,而返回字段中没有的那些能力默认不支持
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="deviceSerial"></param>
+        /// <returns></returns>
+
+        public static async Task<DeviceCapacityResultModel> DeviceCapacity(string accessToken, string deviceSerial)
+        {
+            var url = "https://open.ys7.com/api/lapp/device/capacity";
+            var data = $"accessToken={accessToken}&deviceSerial={deviceSerial}";
+            var result = await RequestUtility.PostAsync<DeviceCapacityResultModel>(data, url);
+            return result;
+        }
+        /// <summary>
+        /// 获取用户下的摄像头列表
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="pageStart"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public static async Task<CameraListResultModel> GetCameraList(string accessToken,int pageStart,int pageSize)
+        {
+            var url = "https://open.ys7.com/api/lapp/camera/list";
+            var data = $"accessToken={accessToken}&pageStart={pageStart}&pageSize={pageSize}";
+            var result = await RequestUtility.PostAsync<CameraListResultModel>(data,url);
+            return result;
+        }
+
     }
 }

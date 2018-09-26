@@ -119,5 +119,6 @@ namespace YSAPI.UnitTest
             var result = await YSAPIManager.OpenVideoLive(accessToken, list);
             Assert.IsTrue(result.code.Equals("200"));
         }
+
     }
 }

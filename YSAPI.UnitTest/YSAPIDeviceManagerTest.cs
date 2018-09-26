@@ -11,9 +11,9 @@ namespace YSAPI.UnitTest
     [TestClass]
     public class YSAPIDeviceManagerTest
     {
-        private string accessToken = "at.bkg2aklx2q63pv6m1cjuz0zr7elvrfk3-837lk38ayj-0kob5wz-ntwvrsctb";
-        private string appKey = "6767e01d34054cd8bbdfb17eb97eda8e";
-        private string appSecret = "ef4b42d12163a46f7249447d555ad071";
+        private string accessToken = "at.95ar5xhx5jrz3jxc4mtn7gfc3l5wzf1s-1sclnfety1-08wit5o-jbz4hyqhz";
+        private string appKey = "a1eb3bf857704945ae8916663cdd08b5";
+        private string appSecret = "9710599d3628132bf2e4de7248009cd4";
 
         [TestMethod]
         public void TestTime()
@@ -42,6 +42,46 @@ namespace YSAPI.UnitTest
         public async Task TestGetDeviceList()
         {
             var result = await YSAPIDeviceManager.GetDeviceList(accessToken,1,10);
+            Assert.IsTrue(result.code.Equals("200"));
+        }
+        /// <summary>
+        /// 关联ipc
+        /// </summary>
+        /// <returns></returns>
+        [TestMethod]
+        public async Task TestAddIPC()
+        {
+            var result = await YSAPIDeviceManager.AddIPC(accessToken, "574364918", "674412071", 1);
+            Assert.IsTrue(result.code.Equals("200"));
+        }
+        /// <summary>
+        /// 设备能力集
+        /// </summary>
+        /// <returns></returns>
+        [TestMethod]
+        public async Task TestDeviceCapacity()
+        {
+            var result = await YSAPIDeviceManager.DeviceCapacity(accessToken, "574364918");
+            Assert.IsTrue(result.code.Equals("200"));
+        }
+        /// <summary>
+        /// 抓拍
+        /// </summary>
+        /// <returns></returns>
+        [TestMethod]
+        public async Task TestCaptureDevice()
+        {
+            var result = await YSAPIDeviceManager.CaptureDevice(accessToken, "574364918", 9);
+            Assert.IsTrue(result.code.Equals("200"));
+        }
+        /// <summary>
+        /// 获取用户下的摄像头列表
+        /// </summary>
+        /// <returns></returns>
+        [TestMethod]
+        public async Task TestCameraList()
+        {
+            var result = await YSAPIDeviceManager.GetCameraList(accessToken,0,20);
             Assert.IsTrue(result.code.Equals("200"));
         }
     }
