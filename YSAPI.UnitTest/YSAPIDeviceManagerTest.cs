@@ -71,7 +71,7 @@ namespace YSAPI.UnitTest
         [TestMethod]
         public async Task TestCaptureDevice()
         {
-            var result = await YSAPIDeviceManager.CaptureDevice(accessToken, "574364918", 9);
+            var result = await YSAPIDeviceManager.CaptureDevice(accessToken, "574364918", 12);
             Assert.IsTrue(result.code.Equals("200"));
         }
         /// <summary>
